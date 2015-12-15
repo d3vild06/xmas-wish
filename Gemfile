@@ -7,10 +7,10 @@ gem 'rails', '4.2.4'
 gem 'pg'
 
 # bootstrap-sass
-gem 'bootstrap-sass', '~> 3.3.5.1'
+gem 'bootstrap-sass', '~> 3.3.4'
 
 # sprockets
-gem 'sprockets', '2.11.0'
+gem 'sprockets', '<=2.11.0'
 
 # simple form
 gem 'simple_form'
@@ -59,4 +59,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
