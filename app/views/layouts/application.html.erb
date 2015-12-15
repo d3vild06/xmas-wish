@@ -7,19 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header>
-    <div class="col-xs-3">
-      <%= link_to root_path do %>
-      <div class="logo">
-        
-        LOGO
-      </div>
-      <% end %>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to 'Xmas-Wish', root_path, :class => 'navbar-brand' %>
     </div>
-    
-
-    
-  </header>
+  </div>
+</nav>
 
 <%= yield %>
 
