@@ -7,15 +7,41 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-custom">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="logo" href="/">
-        <img src="/assets/images/gift-red-icon.png" />
-        </a>
+  <!-- Static navbar -->
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">XMAS WISH</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="work.html">Add My Wish</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
-  </div>
-</nav>
+  </nav>
+
+  <!-- +++++ Welcome Section +++++ -->
+  <div id="ww">
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 centered">
+          <%= image_tag("gift-red-icon.png") %>
+          <!-- <img src="assets/img/user.png" alt="Stanley"> -->
+          <h1>Welcome To My Xmas Wish List!</h1>
+          <p>Here you can add your xmas wish to the list. Your secret Santa will be able to see it and help him or her decide on what gift to get you!</p>
+          <p>To submit a new wish, simply click on the blue <em>Add My Wish</em> button on the top right!</p>
+
+        </div><!-- /col-lg-8 -->
+      </div><!-- /row -->
+      </div> <!-- /container -->
+  </div><!-- /ww -->
 
 <%= yield %>
 
