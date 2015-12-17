@@ -1,3 +1,12 @@
-<h1><%= @wish.wish %></h1>
-<br />
-<h2><%= @wish.name %></h2>
+<% @wishes.each do |wish| %>
+  <div class="booyah-box col-xs-10 col-xs-offset-1">
+    <h1><%= link_to wish.name, wish_path(wish) %></h1><br />
+    <i><%= wish.address %></i><br /><br />
+    <p><%= wish.description %></p><br />
+    
+    <% if wish.user.present? %>
+      <small><%= wish.user.email %></small>
+      <% end %>
+  </div>
+
+  <% end %>

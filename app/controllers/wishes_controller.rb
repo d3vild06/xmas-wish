@@ -1,5 +1,5 @@
 class WishesController < ApplicationController
     def index
-        @wish = Wish.first
+        @wishes = Wish.page(params[:page]).per(4)
     end
 end

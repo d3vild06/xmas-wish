@@ -15,6 +15,12 @@ gem 'sprockets', '<=2.11.0'
 # simple form
 gem 'simple_form'
 
+# pagination
+gem 'kaminari'
+
+# user authentication
+gem 'devise'
+
 # Use SCSS for stylesheets
 gem 'sass-rails'
 
