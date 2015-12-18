@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
   <!-- Static navbar -->
@@ -23,8 +24,18 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="work.html">Add My Wish</a></li>
-          <li><a href="about.html">About</a></li>
+          <% if user_signed_in? %>
+         <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+         <li>
+           <%= link_to '#' do %>
+           <i class="glyphicon glyphicon-user"></i>
+           <%= current_user.email %>
+           <% end %>
+         </li>
+       <% else %>
+         <li><%= link_to 'Sign in', new_user_session_path %></li>
+         <li><%= link_to 'Sign up', new_user_registration_path %></li>
+       <% end %>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -39,12 +50,39 @@
           <!-- <img src="assets/img/user.png" alt="Stanley"> -->
           <h1>Welcome To My Xmas Wish List!</h1>
           <p>Here you can add your xmas wish to the list. Your secret Santa will be able to see it and help him or her decide on what gift to get you!</p>
-          <p>To submit a new wish, simply click on the blue <em>Add My Wish</em> button on the top right!</p>
+          <p>To submit a new wish, simply click on the button below!</p>
+          <%= link_to('Add My Wish', '#', :class => 'btn btn-primary', :data => {:toggle => 'modal', :target => '#myModal'}) %>
 
         </div><!-- /col-lg-8 -->
       </div><!-- /row -->
       </div> <!-- /container -->
   </div><!-- /ww -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add Your Wish</h4>
+        </div>
+
+          <%= simple_form_for Wish.new do |f| %>
+            <div class="modal-body">
+            <%= f.input :wish, :label => "Tell me your xmas wish!", :placeholder => "$1M Dollars!"%>
+            <br />
+            <%= f.input :name, :label => "Whats your name?", :placeholder => "Roberto Q" %>
+          </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit 'Add Wish', :class => 'btn btn-danger' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
 <%= yield %>
 
