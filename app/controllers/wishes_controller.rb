@@ -2,15 +2,14 @@ class WishesController < ApplicationController
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 
     def index
-        @wishes = Wish.page(params[:page]).per(4)
+        @wishes = Wish.page(params[:page]).per(9)
     end
-
+    
     def new
-        @wish = Wish.new
     end
 
     def create
-      @wish = current_user.wish.create(place_params)
+      @wish = current_user.wishes.create(wish_params)
       if @wish.valid?
         redirect_to root_path
       else
@@ -23,7 +22,7 @@ class WishesController < ApplicationController
     end
 
 
-    def place_params
-      params.require(:wish).permit(:wish, :name)
+    def wish_params
+      params.require(:wish).permit(:wish)
     end
 end
