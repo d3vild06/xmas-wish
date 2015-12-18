@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  
+
   root 'wishes#index'
 
   # Example of regular route:
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  resources :wishes
 
   # Example resource route with options:
   #   resources :products do
